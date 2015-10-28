@@ -101,7 +101,7 @@ There are four methods to configure this helper:
 
 - addDirContainer: add a directory container (see below for more explanations)
 - addDir: add a directory 
-- setExtensions: set the file extensions to search for 
+- setExtensions: set the file extensions to search for
 - setFileToUrl: define how do you convert a file (from the filesystem) to an url (test page url)
  
 The nuance between addDirContainer and addDir is that with addDir you directly specify the directory that you want
@@ -143,11 +143,17 @@ But as always, if you know what you are doing, then it's fine...
 
 
 
+
+
     
     
 
 History Log
 ------------------
+    
+- 1.0.1 -- 2015-10-28
+
+    - bug fix: iframe parse rather than refresh for retry later  
     
 - 1.0.0 -- 2015-10-27
 

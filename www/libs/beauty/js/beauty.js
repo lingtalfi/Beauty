@@ -1,5 +1,5 @@
 /**
- * @dependencies 
+ * @dependencies
  *      - jquery 2.1.4
  */
 
@@ -7,8 +7,8 @@ if ('undefined' === typeof window.beauty) {
 
     (function () {
 
-        jQuery.fn.beautyHighlight = function() {
-            $(this).each(function() {
+        jQuery.fn.beautyHighlight = function () {
+            $(this).each(function () {
                 var el = $(this);
                 el.before("<div/>")
                 el.prev()
@@ -22,8 +22,8 @@ if ('undefined' === typeof window.beauty) {
                     .fadeOut(2000);
             });
         };
-        
-        
+
+
         var isArray = function (mixed) {
             if (Object.prototype.toString.call(mixed) === '[object Array]') {
                 return true;
@@ -51,7 +51,7 @@ if ('undefined' === typeof window.beauty) {
                  * a delay of $pendingRetryDelay milliseconds before each retry.
                  * The initial call is not considered as a retry.
                  */
-                pendingMaxRetry: 3,
+                pendingMaxRetry: 10,
                 pendingRetryDelay: 2000,
                 /**
                  * When a test can execute correctly,
@@ -446,7 +446,6 @@ if ('undefined' === typeof window.beauty) {
             var url = getTestUrl(jTest);
             var jOutput = getTestOutput(jTest);
             var title = url;
-            
             refreshIframe(jOutput, url, function (type, match) {
                 // update the session
                 // - update the board
@@ -516,7 +515,7 @@ if ('undefined' === typeof window.beauty) {
                 else {
                     devError("Unknown type: " + type);
                 }
-            });
+            }, jPendingDetailItem);
         }
 
 
@@ -630,32 +629,45 @@ if ('undefined' === typeof window.beauty) {
          *                      - sk: int, the number of skip
          *
          */
-        function refreshIframe(jOutput, url, onSuccess) {
+        function refreshIframe(jOutput, url, onSuccess, jPendingDetailItem) {
             var iframe = jOutput[0];
-            iframe.onload = function () {
-                var output = $(this).contents().find('body').html();
-                var pattern = '_BEAST_TEST_RESULTS:s=([0-9]+);f=([0-9]+);e=([0-9]+);na=([0-9]+);sk=([0-9]+)__';
-                var oReg = new RegExp(pattern, 'gm');
-                var match = oReg.exec(output);
-                                
-                var matchInfo = null;
-                var type = 'unknown';
-                if (null !== match) {
-                    type = 'match';
-                    matchInfo = {
-                        s: match[1],
-                        f: match[2],
-                        e: match[3],
-                        na: match[4],
-                        sk: match[5]
-                    };
-                }
-                else if (true === /_BEAST_TEST_NOT_FINISHED_RETRY_LATER__/m.test(output)) {
-                    type = 'pending';
-                }
-                onSuccess(type, matchInfo);
-            };
-            iframe.src = url;
+
+            if ('undefined' === typeof jPendingDetailItem) {
+                iframe.onload = function () {
+                    var output = $(this).contents().find('body').html();
+                    iframeParseOutput(output, onSuccess);
+                };
+                iframe.src = url;
+            }
+            else {
+                var output = $(iframe).contents().find('body').html();
+                iframeParseOutput(output, onSuccess);
+            }
+        }
+
+
+        function iframeParseOutput(output, onSuccess) {
+            var pattern = '_BEAST_TEST_RESULTS:s=([0-9]+);f=([0-9]+);e=([0-9]+);na=([0-9]+);sk=([0-9]+)__';
+            var oReg = new RegExp(pattern, 'gm');
+            var match = oReg.exec(output);
+
+
+            var matchInfo = null;
+            var type = 'unknown';
+            if (null !== match) {
+                type = 'match';
+                matchInfo = {
+                    s: match[1],
+                    f: match[2],
+                    e: match[3],
+                    na: match[4],
+                    sk: match[5]
+                };
+            }
+            else if (true === /_BEAST_TEST_NOT_FINISHED_RETRY_LATER__/m.test(output)) {
+                type = 'pending';
+            }
+            onSuccess(type, matchInfo);
         }
 
 

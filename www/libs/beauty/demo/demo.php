@@ -11,7 +11,7 @@ require_once "bigbang.php";
 $f = __DIR__ . "/../tests";
 $testPageUrls = AuthorTestFinder::create()
     ->addDirContainer($f)
-    ->setExtensions(['bst.php'])
+    ->setExtensions(['.bst.php', '.html'])
     ->setFileToUrl(function($file, $relPath){
         return 'http://'. $_SERVER['HTTP_HOST'] .'/libs/beauty/tests/' . $relPath;
     })
@@ -19,6 +19,7 @@ $testPageUrls = AuthorTestFinder::create()
 ;
 
 $openGroups = [
+    'js',
     'myApp/kazam',
 ];
 
