@@ -144,6 +144,33 @@ But as always, if you know what you are doing, then it's fine...
 
 
 
+Random notes about some of the tests
+---------------------
+
+2015-10-28
+
+
+In the tests directory (www/libs/beauty/tests) of this planet, you might find good examples 
+of how to write your tests.
+
+There is an example of testing a bash program, one testing a javascript program,
+and the other test php code.
+
+As far as I know, only javascript has the capability to update an already rendered html page.
+Therefore it makes sense to use the retry later string only if the generated html page uses javascript.
+
+
+By default, when a task take some time to execute (see www/libs/beauty/tests/myApp/kazam/sleep.bst.php),
+the browser hangs up until the task is done, and then only the beauty gui starts interpreting the rendered html page.
+
+
+
+
+
+
+
+
+
 
     
     
