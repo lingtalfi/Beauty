@@ -3,6 +3,8 @@ Beauty
 2015-10-27
 
 
+![Beauty look](http://s19.postimg.org/455mlu89v/beauty.png)
+
 
 An implementation of the beauty part of the [beauty'n'beast unit testing pattern](https://github.com/lingtalfi/Dreamer/blob/master/UnitTesting/BeautyNBeast/pattern.beautyNBeast.eng.md).
 
