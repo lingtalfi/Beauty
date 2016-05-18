@@ -3,7 +3,7 @@ Beauty
 2016-05-17
 
 
-![Beauty look](http://s19.postimg.org/ga3q55vmr/beauty2.png)
+![Beauty look](http://s19.postimg.org/98adwpher/beauty3.png)
 
 
 Beauty searches for your [test pages](https://github.com/lingtalfi/Dreamer/blob/master/UnitTesting/BeautyNBeast/pattern.beautyNBeast.eng.md#test-page)
@@ -55,8 +55,8 @@ In terms of code, a TestFinderInterface has one method:
 Example
 --------------
    
-In the following example, I have my tests along with my source code in a directory named planet.
-I use the KazuyaTestFinder to find my tests and pass the results to the gui part.
+In the following example, I use the KazuyaTestFinder to find my tests and pass the results to the gui part.
+For more info about the KazuyaTestFinder, please look at the comments in its source code. 
  
 
 ```php
@@ -67,37 +67,29 @@ use Beauty\TestFinder\AuthorTestFinder;
 use Beauty\TestFinder\KazuyaTestFinder;use DirScanner\DirScanner;
 use DirScanner\YorgDirScannerTool;
 
-require_once "bigbang.php"; // start the universe
-
-
+    
+require_once "bigbang.php"; // start the local universe (https://github.com/lingtalfi/Observer/blob/master/article/article.planetReference.eng.md)
 
 
 
 
 
 /**
- * Prerequisites:
- *
- * you want to execute every tests inside the ../planets directory,
- * and you've created a web accessible bnb directory, inside of which
- * you've create a symlink to the real planet directory.
- *
- * All your tests have the extension .test.php.
- *
+ * More structure info in the KazuyaTestFinder's class comments.
  */
 //------------------------------------------------------------------------------/
 // COLLECT TESTS 
 //------------------------------------------------------------------------------/
-$dir = __DIR__ . "/../planets";
+$dir = __DIR__ . "/bnb";
 $testPageUrls = KazuyaTestFinder::create()
     ->addDir($dir)
-    ->setDirName('bnb/planets')
     ->addExtension('.test.php')
     ->getTestPageUrls();
 
+    
+// here choose which groups should be opened when starting    
 $openGroups = [
-    'js',
-    'myApp/kazam',
+    'ssssplanets',
 ];
 
 
@@ -107,8 +99,8 @@ $openGroups = [
 // DISPLAYING THE HTML PAGE
 //------------------------------------------------------------------------------/
 /**
- * Just copy the snippet below, it works every time...
- */
+ * This is the beauty gui snippet below, just copy paste it.
+ */    
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -152,6 +144,11 @@ $openGroups = [
 History Log
 ------------------
     
+- 1.2.0 -- 2016-05-18
+
+    - KazuyaTestFinder now follows symlinks
+    - removed KazuyaTestFinder's obsolete setDirName method
+
 - 1.1.0 -- 2016-05-17
 
     - add KazuyaTestFinder

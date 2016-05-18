@@ -5,37 +5,29 @@ use Beauty\TestFinder\AuthorTestFinder;
 use Beauty\TestFinder\KazuyaTestFinder;use DirScanner\DirScanner;
 use DirScanner\YorgDirScannerTool;
 
-require_once "bigbang.php"; // start the universe
 
-
+require_once "bigbang.php"; // start the local universe (https://github.com/lingtalfi/Observer/blob/master/article/article.planetReference.eng.md)
 
 
 
 
 
 /**
- * Prerequisites:
- *
- * you want to execute every tests inside the ../planets directory,
- * and you've created a web accessible bnb directory, inside of which
- * you've create a symlink to the real planet directory.
- *
- * All your tests have the extension .test.php.
- *
+ * More structure info in the KazuyaTestFinder's class comments.
  */
 //------------------------------------------------------------------------------/
 // COLLECT TESTS 
 //------------------------------------------------------------------------------/
-$dir = __DIR__ . "/../planets";
+$dir = __DIR__ . "/bnb";
 $testPageUrls = KazuyaTestFinder::create()
     ->addDir($dir)
-    ->setDirName('bnb/planets')
     ->addExtension('.test.php')
     ->getTestPageUrls();
 
+
+// here choose which groups should be opened when starting    
 $openGroups = [
-    'js',
-    'myApp/kazam',
+    'ssssplanets',
 ];
 
 
@@ -45,7 +37,7 @@ $openGroups = [
 // DISPLAYING THE HTML PAGE
 //------------------------------------------------------------------------------/
 /**
- * Just copy the snippet below, it works every time...
+ * This is the beauty gui snippet below, just copy paste it.
  */
 ?><!DOCTYPE html>
 <html>
