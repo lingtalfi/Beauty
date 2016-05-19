@@ -62,12 +62,9 @@ For more info about the KazuyaTestFinder, please look at the comments in its sou
 ```php
 <?php
 
-use Bat\FileSystemTool;
-use Beauty\TestFinder\AuthorTestFinder;
-use Beauty\TestFinder\KazuyaTestFinder;use DirScanner\DirScanner;
-use DirScanner\YorgDirScannerTool;
+use Beauty\TestFinder\KazuyaTestFinder;
 
-    
+
 require_once "bigbang.php"; // start the local universe (https://github.com/lingtalfi/Observer/blob/master/article/article.planetReference.eng.md)
 
 
@@ -82,8 +79,9 @@ require_once "bigbang.php"; // start the local universe (https://github.com/ling
 //------------------------------------------------------------------------------/
 $dir = __DIR__ . "/bnb";
 $testPageUrls = KazuyaTestFinder::create()
-    ->addDir($dir)
-    ->addExtension('.test.php')
+    ->setRootDir($dir)
+    ->addExtension('test.php')
+    ->addExtension('test.html')
     ->getTestPageUrls();
 
     
@@ -143,6 +141,11 @@ $openGroups = [
 
 History Log
 ------------------
+    
+- 1.3.0 -- 2016-05-18
+
+    - add KazuyaTestFinder.setRootDir method
+    - removed KazuyaTestFinder's obsolete addDir method
     
 - 1.2.0 -- 2016-05-18
 

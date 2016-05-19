@@ -21,13 +21,12 @@ namespace Beauty\TestFinder;
  * at least one web accessible folder to access our tests.
  * 
  * Kazuya's strategy is about taking advantage of that necessary web accessible folder, and use it as the only 
- * root for all your tests. This basically means that kazuya is based on the "one root folder" workflow.
+ * root for all your tests. 
+ * In other words, kazuya uses the "one root folder" workflow.
  * 
- * Let's call the kazuya's web root directory the kazuya root directory.
- * 
- * Now since your tests might be scattered in various places of your machine, but since we want all of them
- * to be accessible from that one place at the same time, we need to create symlinks, inside the kazuya root directory,
- * which points to the various locations where the tests actually are.
+ * You have one big web accessible directory that contains all your tests.
+ * Now since your tests might be scattered in various places of your machine, you might want to use symlinks to make 
+ * that happen.
  * 
  * 
  * 
@@ -37,7 +36,8 @@ namespace Beauty\TestFinder;
  * Create a web accessible folder, I will call mine bnb.
  * Then, create a symlink, inside the bnb directory, for every "base test" directory that you have;
  * 
- * where a base test directory is a directory that contains directly or indirectly an arbitrary number of "test pages" (https://github.com/lingtalfi/Dreamer/blob/master/UnitTesting/BeautyNBeast/pattern.beautyNBeast.eng.md#test-page).
+ * where a base test directory is a directory that contains (without level constraint) an arbitrary 
+ * number of "test pages" (https://github.com/lingtalfi/Dreamer/blob/master/UnitTesting/BeautyNBeast/pattern.beautyNBeast.eng.md#test-page).
  * Note that Kazuya find tests recursively.
  * 
  * 
@@ -60,16 +60,14 @@ use DirScanner\DirScanner;
 class KazuyaTestFinder implements TestFinderInterface
 {
 
-    private $dirs;
+    private $rootDir;
     private $extensions;
     private $host;
 
     public function __construct()
     {
-        $this->dirs = [];
         $this->extensions = [];
         $this->host = $_SERVER['HTTP_HOST'];
-
     }
 
 
@@ -77,10 +75,7 @@ class KazuyaTestFinder implements TestFinderInterface
     {
         return new static();
     }
-
-
-
-
+    
     //------------------------------------------------------------------------------/
     // IMPLEMENTS TestFinderInterface
     //------------------------------------------------------------------------------/
@@ -106,13 +101,13 @@ class KazuyaTestFinder implements TestFinderInterface
 
 
         // now parse the dirs and collects the tests
-        foreach ($this->dirs as $dir) {
+        $dir = $this->rootDir;
             $dirName = basename($dir);
             $files = DirScanner::create()
                 ->setFollowLinks(true)
                 ->scanDir($dir, function ($path, $rPath, $level) use ($ext2Length) {
                     foreach ($ext2Length as $xt => $len) {
-                        if ($xt === substr($rPath, -1 * $len)) {
+                        if ('.' . $xt === substr($rPath, -1 * $len - 1)) {
                             return $rPath;
                         }
                     }
@@ -120,19 +115,21 @@ class KazuyaTestFinder implements TestFinderInterface
             foreach ($files as $file) {
                 $tests = array_merge_recursive($tests, $this->arrayNest($file, $dirName, array_filter(explode('/', $file))));
             }
-        }
+        
         return $tests;
     }
 
-    
+
+
     //------------------------------------------------------------------------------/
     // 
     //------------------------------------------------------------------------------/
-    public function addDir(string $d)
+    public function setRootDir(string $rootDir)
     {
-        $this->dirs[] = $d;
+        $this->rootDir = $rootDir;
         return $this;
     }
+
 
     public function addExtension(string $extension)
     {

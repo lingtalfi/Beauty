@@ -1,9 +1,6 @@
 <?php
 
-use Bat\FileSystemTool;
-use Beauty\TestFinder\AuthorTestFinder;
-use Beauty\TestFinder\KazuyaTestFinder;use DirScanner\DirScanner;
-use DirScanner\YorgDirScannerTool;
+use Beauty\TestFinder\KazuyaTestFinder;
 
 
 require_once "bigbang.php"; // start the local universe (https://github.com/lingtalfi/Observer/blob/master/article/article.planetReference.eng.md)
@@ -20,8 +17,9 @@ require_once "bigbang.php"; // start the local universe (https://github.com/ling
 //------------------------------------------------------------------------------/
 $dir = __DIR__ . "/bnb";
 $testPageUrls = KazuyaTestFinder::create()
-    ->addDir($dir)
-    ->addExtension('.test.php')
+    ->setRootDir($dir)
+    ->addExtension('test.php')
+    ->addExtension('test.html')
     ->getTestPageUrls();
 
 
