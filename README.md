@@ -1,6 +1,6 @@
 Beauty
 ============
-2016-05-17
+2016-05-17 -- 2016-12-15
 
 
 ![Beauty look](http://s19.postimg.org/98adwpher/beauty3.png)
@@ -135,6 +135,13 @@ $openGroups = [
 </html>
 ```
  
+ 
+ 
+Related
+=============
+- [quickstart bnb app with kif](https://github.com/lingtalfi/bnb)
+
+
 
 
     
