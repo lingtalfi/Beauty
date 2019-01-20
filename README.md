@@ -3,7 +3,7 @@ Beauty
 2016-05-17 -- 2017-11-21
 
 
-![Beauty look](http://s19.postimg.org/98adwpher/beauty3.png)
+![Beauty look](http://lingtalfi.com/img/universe/Beauty/beauty3.png)
 
 
 
