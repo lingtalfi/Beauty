@@ -6,6 +6,22 @@ Beauty
 ![Beauty look](http://s19.postimg.org/98adwpher/beauty3.png)
 
 
+
+
+Beauty is part of the [universe framework](https://github.com/karayabin/universe-snapshot).
+
+
+Install
+=============
+
+
+Using the [uni tool](https://github.com/lingtalfi/universe-naive-importer)
+```bash
+uni import Beauty
+```
+
+
+
 Beauty searches for your [test pages](https://github.com/lingtalfi/Dreamer/blob/master/UnitTesting/BeautyNBeast/pattern.beautyNBeast.eng.md#test-page)
 and executes them.
 
