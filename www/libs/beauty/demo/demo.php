@@ -1,6 +1,6 @@
 <?php
 
-use Beauty\TestFinder\AuthorTestFinder;
+use Ling\Beauty\TestFinder\AuthorTestFinder;
 
 require_once "bigbang.php";
 

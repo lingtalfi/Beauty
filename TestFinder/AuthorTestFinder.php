@@ -1,6 +1,6 @@
 <?php
 
-namespace Beauty\TestFinder;
+namespace Ling\Beauty\TestFinder;
 
 /*
  * LingTalfi 2015-10-27

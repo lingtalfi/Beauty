@@ -17,7 +17,7 @@ Install
 
 Using the [uni tool](https://github.com/lingtalfi/universe-naive-importer)
 ```bash
-uni import Beauty
+uni import Ling/Beauty
 ```
 
 
@@ -101,7 +101,7 @@ For more info about the KazuyaTestFinder, please look at the comments in its sou
 ```php
 <?php
 
-use Beauty\TestFinder\KazuyaTestFinder;
+use Ling\Beauty\TestFinder\KazuyaTestFinder;
 
 
 require_once "bigbang.php"; // start the local universe (https://github.com/lingtalfi/Observer/blob/master/article/article.planetReference.eng.md)

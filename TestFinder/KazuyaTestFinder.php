@@ -1,6 +1,6 @@
 <?php
 
-namespace Beauty\TestFinder;
+namespace Ling\Beauty\TestFinder;
 
 /*
  * LingTalfi 2016-05-13
@@ -55,7 +55,7 @@ namespace Beauty\TestFinder;
  * 
  * 
  */
-use DirScanner\DirScanner;
+use Ling\DirScanner\DirScanner;
 
 class KazuyaTestFinder implements TestFinderInterface
 {
