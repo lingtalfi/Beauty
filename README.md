@@ -46,7 +46,7 @@ Bnb Planet system
 
 If you're a planet author, I've updated the tool for that.
 
-Read the setup in the [conception notes](https://github.com/lingtalfi/Beauty/blob/master/doc/pages/conception-notes.md).
+Read the setup in the [conception notes](https://github.com/lingtalfi/Beauty/blob/master/personal/mydoc/pages/conception-notes.md).
 
 
 
@@ -214,6 +214,10 @@ Related
 History Log
 ------------------
 
+- 1.4.5 -- 2021-03-05
+
+    - fix 404 link in README.md  
+  
 - 1.4.4 -- 2021-03-05
 
     - add "bnb planet system" to help planet authors  
