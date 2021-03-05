@@ -1,6 +1,6 @@
 Beauty
 ============
-2016-05-17 -- 2017-11-21
+2016-05-17 -> 2021-03-05
 
 
 ![Beauty look](http://lingtalfi.com/img/universe/Beauty/beauty3.png)
@@ -14,6 +14,11 @@ Beauty is part of the [universe framework](https://github.com/karayabin/universe
 Install
 =============
 
+
+Using the [planet installer](https://github.com/lingtalfi/Light_PlanetInstaller) via [light-cli](https://github.com/lingtalfi/Light_Cli)
+```bash
+lt install Ling.Beauty
+```
 
 Using the [uni tool](https://github.com/lingtalfi/universe-naive-importer)
 ```bash
@@ -187,6 +192,10 @@ Related
 
 History Log
 ------------------
+
+- 1.4.3 -- 2021-03-05
+
+    - update README.md, add install alternative
 
 - 1.4.2 -- 2020-12-08
 
