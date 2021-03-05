@@ -13,7 +13,7 @@ $testPageUrls = AuthorTestFinder::create()
     ->addDirContainer($f)
     ->setExtensions(['.bst.php', '.html'])
     ->setFileToUrl(function($file, $relPath){
-        return 'http://'. $_SERVER['HTTP_HOST'] .'/libs/beauty/tests/' . $relPath;
+        return 'http://'. $_SERVER['HTTP_HOST'] .'/libs/universe/Ling/beauty/tests/' . $relPath;
     })
     ->getTestPageUrls()
 ;
@@ -35,7 +35,7 @@ $openGroups = [
     <meta charset="utf-8"/>
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <!--    <script src="/libs/jquery/jquery-2.1.4.min.js"></script>-->
-    <script src="/libs/beauty/js/beauty.js"></script>
+    <script src="/libs/universe/Ling/Beauty/js/beauty.js"></script>
     <title>Html page</title>
 </head>
 

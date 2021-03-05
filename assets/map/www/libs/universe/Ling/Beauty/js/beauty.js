@@ -94,6 +94,7 @@ if ('undefined' === typeof window.beauty) {
                 var end = "/js/beauty.js";
                 var src = $('script[src$="' + end + '"]').attr('src');
                 var beautyUrl = src.substr(0, src.length - end.length);
+
                 var jsonServerUrl = beautyUrl + '/server/fetch-template.php?tpl=' + tplId + '&callback=?';
                 $.getJSON(jsonServerUrl, function (d) {
                     $('head').append($('<link rel="stylesheet" type="text/css" />').attr('href', d.cssUrl));
@@ -208,6 +209,7 @@ if ('undefined' === typeof window.beauty) {
                 if (false === isArray(groups)) {
                     groups = [groups];
                 }
+
                 for (var i in groups) {
                     var path = groups[i];
                     var jGroup = findGroupByDotPath(jContainer, path);
@@ -685,7 +687,7 @@ if ('undefined' === typeof window.beauty) {
         }
 
         function getTestUrl(jTest) {
-            return jTest.find('.title:first').html();
+            return jTest.find('.title:first').text();
         }
 
         function getTestOutput(jTest) {
