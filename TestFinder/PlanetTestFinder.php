@@ -9,19 +9,7 @@ use Ling\DirScanner\YorgDirScannerTool;
 
 /**
  * The PlanetTestFinder class.
- *
- * This class assumes that you place your tests in a directory named "bnb" at the root of your planet.
- *
- * It also assumes that you take the content of the "demo-planets.php" file, and paste it into a "bnb.php" script
- * at the root of the webserver of your app.
- *
- * todo: here...
- * todo: here...
- * todo: here...
- * todo: here...
- * todo: here...
- *
- *
+ * https://github.com/lingtalfi/Beauty/blob/master/personal/mydoc/pages/conception-notes.md#bnb-planet-system
  *
  */
 class PlanetTestFinder implements TestFinderInterface
@@ -117,6 +105,7 @@ class PlanetTestFinder implements TestFinderInterface
 
         $tests = [];
         $files = YorgDirScannerTool::getFilesWithExtension($this->uniDir, $this->extensions, false, true, true, true);
+
 
         foreach ($files as $file) {
             $p = explode(DIRECTORY_SEPARATOR, $file);

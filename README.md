@@ -1,6 +1,6 @@
 Beauty
 ============
-2016-05-17 -> 2021-03-05
+2016-05-17 -> 2021-03-08
 
 
 ![Beauty look](http://lingtalfi.com/img/universe/Beauty/beauty3.png)
@@ -214,6 +214,10 @@ Related
 History Log
 ------------------
 
+- 1.4.8 -- 2021-03-08
+
+    - cleaning up class documentation  
+  
 - 1.4.5 -- 2021-03-05
 
     - fix 404 link in README.md  
